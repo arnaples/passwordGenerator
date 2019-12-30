@@ -45,8 +45,6 @@ def getSuffix(chars=None):
     suffix.extend(specialChars)
 
 def getPasswordThreaded(chars=None):
-    passwords.clear()
-    suffix.clear()
     threads = (threading.Thread(target=getWords()),threading.Thread(target=getSuffix(chars=chars)))
 
     for thread in threads:
@@ -60,8 +58,6 @@ def getPasswordThreaded(chars=None):
     addToClipBoard(password)
 
 def getPasswordSequential(chars=None):
-    passwords.clear()
-    suffix.clear()
     getWords()
     getSuffix(chars=chars)
     password= ''.join(passwords)+''.join(suffix)
